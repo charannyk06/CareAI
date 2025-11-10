@@ -375,3 +375,158 @@
   }
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .faq-panel {
+    width: 400px;
+  }
+
+  .faq-header {
+    padding: 14px 16px;
+  }
+
+  .faq-title {
+    font-size: 15px;
+  }
+
+  .faq-messages {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .message-bubble {
+    padding: 10px 14px;
+    font-size: 13px;
+    max-width: 85%;
+  }
+
+  .faq-input-container {
+    padding: 14px 16px;
+  }
+
+  .faq-input {
+    height: 50px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .faq-panel {
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    border-left: none;
+    z-index: 1002;
+  }
+
+  .faq-header {
+    padding: 12px 16px;
+    height: 56px;
+  }
+
+  .faq-title {
+    font-size: 14px;
+  }
+
+  .faq-icon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .message-icon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .faq-close img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .faq-messages {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .message-bubble {
+    padding: 10px 12px;
+    font-size: 13px;
+    max-width: 90%;
+    line-height: 1.4;
+  }
+
+  .message-time {
+    font-size: 10px;
+  }
+
+  .faq-input-container {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .faq-input {
+    height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .faq-send-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .option-buttons {
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .option-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .ticket-form {
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .form-group textarea {
+    min-height: 50px;
+  }
+
+  .form-submit-button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .preview-container {
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .preview-item {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .proceed-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+

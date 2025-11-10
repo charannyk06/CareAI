@@ -168,3 +168,129 @@
   font-weight: 600;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .top-navigation {
+    padding: 8px 12px;
+    height: 50px;
+  }
+
+  .nav-left .certify-logo {
+    margin-right: 16px;
+  }
+
+  .nav-left .grid-icon-3x3 {
+    margin-right: 16px;
+  }
+
+  .nav-left .nav-icon:not(.certify-logo):not(.grid-icon-3x3):not(.table-icon) {
+    margin-right: 8px;
+  }
+
+  .certify-logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .dropdown-button {
+    height: 24px;
+    padding: 4px 20px 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  .dropdown-arrow {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dropdown-menu {
+    min-width: 160px;
+    font-size: 13px;
+  }
+
+  .dropdown-item {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .avatar-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-navigation {
+    padding: 8px 10px;
+    height: 48px;
+  }
+
+  .nav-left .certify-logo {
+    margin-right: 12px;
+  }
+
+  .nav-left .grid-icon-3x3 {
+    margin-right: 8px;
+  }
+
+  /* Hide some less critical icons on very small screens */
+  .nav-left .nav-icon:not(.certify-logo):not(.grid-icon-3x3):not(.table-icon) {
+    display: none;
+  }
+
+  .nav-left .table-icon {
+    margin-right: 0;
+  }
+
+  .certify-logo img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-right {
+    gap: 6px;
+  }
+
+  .dropdown-button {
+    height: 22px;
+    padding: 3px 16px 3px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .dropdown-arrow {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Hide help icon on very small screens */
+  .nav-right > .nav-icon {
+    display: none;
+  }
+
+  .avatar-circle {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+}
+

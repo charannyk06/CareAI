@@ -26,7 +26,6 @@ const FAQPanel = () => {
     description: '',
     location: ''
   });
-  const [previewData, setPreviewData] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const [streamingMessage, setStreamingMessage] = useState(null);
   const messagesEndRef = useRef(null);
@@ -111,13 +110,6 @@ const FAQPanel = () => {
       if (!formData.subject || !formData.description || !formData.location) {
         return;
       }
-      setPreviewData({
-        ...userInfo,
-        ticketType: ticketType === 'support_ticket' ? 'Support Ticket' : 'Change Request',
-        subject: formData.subject,
-        description: formData.description,
-        location: formData.location
-      });
       setConversationState('preview');
       const previewDataObj = {
         ...userInfo,
@@ -198,7 +190,6 @@ const FAQPanel = () => {
       setConversationState('normal');
       setTicketType(null);
       setFormData({ subject: '', description: '', location: '' });
-      setPreviewData(null);
     });
   };
 

@@ -18,3 +18,28 @@
   width: 100%;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .app-body {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .app-body {
+    position: relative;
+    flex: 1;
+    overflow: auto;
+  }
+
+  .bottom-bar {
+    display: none;
+  }
+}
+

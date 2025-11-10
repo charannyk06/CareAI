@@ -3,30 +3,42 @@ import './TopNavigation.css';
 import CertifyLogo from '../assets/CertifyLogo.png';
 
 const TopNavigation = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedPractice, setSelectedPractice] = useState('Whittaker Family Dental');
-  const dropdownRef = useRef(null);
+  const [isFacilityDropdownOpen, setIsFacilityDropdownOpen] = useState(false);
+  const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
+  const [selectedFacility, setSelectedFacility] = useState('Whittaker Family Dental');
+  const [selectedLocation, setSelectedLocation] = useState('Location 1');
+  const facilityDropdownRef = useRef(null);
+  const locationDropdownRef = useRef(null);
 
-  const practices = [
+  const facilities = [
     'Whittaker Family Dental',
     'Whittaker Dental Care Defi'
   ];
 
+  const locations = [
+    'Location 1',
+    'Location 2',
+    'Location 3'
+  ];
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
+      if (facilityDropdownRef.current && !facilityDropdownRef.current.contains(event.target)) {
+        setIsFacilityDropdownOpen(false);
+      }
+      if (locationDropdownRef.current && !locationDropdownRef.current.contains(event.target)) {
+        setIsLocationDropdownOpen(false);
       }
     };
 
-    if (isDropdownOpen) {
+    if (isFacilityDropdownOpen || isLocationDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isDropdownOpen]);
+  }, [isFacilityDropdownOpen, isLocationDropdownOpen]);
 
   return (
     <div className="top-navigation">
@@ -34,18 +46,18 @@ const TopNavigation = () => {
         <div className="nav-icon certify-logo">
           <img src={CertifyLogo} alt="Certify" />
         </div>
-        <div className="nav-icon">
+        <div className="nav-icon grid-icon-3x3">
           <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
-            {/* 3x3 Grid - 9 squares */}
-            <rect x="2" y="2" width="4" height="4" fill="#666"/>
-            <rect x="7" y="2" width="4" height="4" fill="#666"/>
-            <rect x="12" y="2" width="4" height="4" fill="#666"/>
-            <rect x="2" y="7" width="4" height="4" fill="#666"/>
-            <rect x="7" y="7" width="4" height="4" fill="#666"/>
-            <rect x="12" y="7" width="4" height="4" fill="#666"/>
-            <rect x="2" y="12" width="4" height="4" fill="#666"/>
-            <rect x="7" y="12" width="4" height="4" fill="#666"/>
-            <rect x="12" y="12" width="4" height="4" fill="#666"/>
+            {/* 3x3 Grid - 9 small squares */}
+            <rect x="2" y="2" width="4" height="4" fill="#000"/>
+            <rect x="8" y="2" width="4" height="4" fill="#000"/>
+            <rect x="14" y="2" width="4" height="4" fill="#000"/>
+            <rect x="2" y="8" width="4" height="4" fill="#000"/>
+            <rect x="8" y="8" width="4" height="4" fill="#000"/>
+            <rect x="14" y="8" width="4" height="4" fill="#000"/>
+            <rect x="2" y="14" width="4" height="4" fill="#000"/>
+            <rect x="8" y="14" width="4" height="4" fill="#000"/>
+            <rect x="14" y="14" width="4" height="4" fill="#000"/>
           </svg>
         </div>
         <div className="nav-icon">
@@ -71,33 +83,62 @@ const TopNavigation = () => {
             <line x1="7.33" y1="2" x2="7.33" y2="7" stroke="#666" strokeWidth="1.5"/>
             <line x1="12.67" y1="2" x2="12.67" y2="7" stroke="#666" strokeWidth="1.5"/>
             <line x1="2" y1="7" x2="18" y2="7" stroke="#666" strokeWidth="1.5"/>
+            {/* Highlight first cell with border */}
+            <rect x="2" y="2" width="5.33" height="5" fill="#E0E0E0" stroke="#666" strokeWidth="1.5"/>
           </svg>
         </div>
       </div>
       
       <div className="nav-right">
-        <div className="practice-dropdown-container" ref={dropdownRef}>
+        <div className="dropdown-container" ref={facilityDropdownRef}>
           <button 
-            className="practice-dropdown-button"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="dropdown-button"
+            onClick={() => setIsFacilityDropdownOpen(!isFacilityDropdownOpen)}
           >
-            {selectedPractice}
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}>
-              <path d="M3 4.5L6 7.5L9 4.5" stroke="#666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            {selectedFacility}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={`dropdown-arrow ${isFacilityDropdownOpen ? 'open' : ''}`}>
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-          {isDropdownOpen && (
-            <div className="practice-dropdown-menu">
-              {practices.map((practice) => (
+          {isFacilityDropdownOpen && (
+            <div className="dropdown-menu">
+              {facilities.map((facility) => (
                 <div
-                  key={practice}
-                  className={`practice-dropdown-item ${selectedPractice === practice ? 'active' : ''}`}
+                  key={facility}
+                  className={`dropdown-item ${selectedFacility === facility ? 'active' : ''}`}
                   onClick={() => {
-                    setSelectedPractice(practice);
-                    setIsDropdownOpen(false);
+                    setSelectedFacility(facility);
+                    setIsFacilityDropdownOpen(false);
                   }}
                 >
-                  {practice}
+                  {facility}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="dropdown-container" ref={locationDropdownRef}>
+          <button 
+            className="dropdown-button"
+            onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}
+          >
+            {selectedLocation}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={`dropdown-arrow ${isLocationDropdownOpen ? 'open' : ''}`}>
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          {isLocationDropdownOpen && (
+            <div className="dropdown-menu">
+              {locations.map((location) => (
+                <div
+                  key={location}
+                  className={`dropdown-item ${selectedLocation === location ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedLocation(location);
+                    setIsLocationDropdownOpen(false);
+                  }}
+                >
+                  {location}
                 </div>
               ))}
             </div>
@@ -107,13 +148,6 @@ const TopNavigation = () => {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <circle cx="10" cy="10" r="8" stroke="#666" strokeWidth="1.5" fill="none"/>
             <text x="10" y="14" textAnchor="middle" fill="#666" fontSize="10" fontWeight="bold">?</text>
-          </svg>
-        </div>
-        <div className="nav-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41" stroke="#666" strokeWidth="1.5" strokeLinecap="round"/>
-            <circle cx="10" cy="10" r="6" stroke="#666" strokeWidth="1.5" fill="none"/>
-            <circle cx="10" cy="10" r="2" fill="#666"/>
           </svg>
         </div>
         <div className="nav-avatar">
